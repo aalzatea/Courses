@@ -1,4 +1,4 @@
-package com.aalzatea.courses.linkedinlearning.challenges.fizzbuzz
+package com.aalzatea.courses.linkedinlearning.challenges.kotlin.fizzbuzz
 
 fun main() {
     println("Fizz Buzz")

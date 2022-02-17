@@ -1,4 +1,4 @@
-package com.aalzatea.courses.linkedinlearning.challenges.fizzbuzz;
+package com.aalzatea.courses.linkedinlearning.challenges.java.fizzbuzz;
 
 import java.util.stream.IntStream;
 
