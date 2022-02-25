@@ -10,5 +10,14 @@ repositories {
 }
 
 dependencies {
+    //Compiling
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    //Testing
+    testImplementation('org.jetbrains.kotlin:kotlin-test')
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+}
+
+test {
+    useJUnitPlatform()
 }
