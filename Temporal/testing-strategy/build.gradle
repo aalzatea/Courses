@@ -1,0 +1,101 @@
+plugins {
+	id 'org.springframework.boot' version "${springBootVersion}"
+	id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+	id 'java'
+	id 'com.adarshr.test-logger' version '3.2.0'
+}
+
+group = 'com.oportun.poc'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	//Compilation
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//Testing
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation "uk.co.jemos.podam:podam:${podamVersion}"
+	testImplementation 'org.mockito:mockito-inline'
+	testImplementation 'io.rest-assured:rest-assured'
+	testImplementation "com.intuit.karate:karate-junit5:${karateJUnit5}"
+	testImplementation "com.intuit.karate:karate-apache:${karateVersion}"
+
+	//Development Tools
+	compileOnly 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//testImplementation 'org.junit.platform:junit-platform-console-standalone:1.8.2'
+}
+
+// ###### Testing tasks section
+tasks.named('test') {
+	useJUnitPlatform {
+		excludeTags 'integration-test'
+	}
+}
+
+tasks.register("integrationTest", Test) {
+	useJUnitPlatform {
+		includeTags 'integration-test'
+	}
+}
+
+tasks.named("check") {
+	dependsOn integrationTest
+}
+
+/*import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+tasks.withType(Test) {
+	testLogging {
+		// set options for log level LIFECYCLE
+		events TestLogEvent.FAILED,
+				TestLogEvent.PASSED,
+				TestLogEvent.SKIPPED,
+				TestLogEvent.STANDARD_OUT
+		exceptionFormat TestExceptionFormat.FULL
+		showExceptions true
+		showCauses true
+		showStackTraces true
+
+		// set options for log level DEBUG and INFO
+		debug {
+			events 	TestLogEvent.STARTED,
+					TestLogEvent.FAILED,
+					TestLogEvent.PASSED,
+					TestLogEvent.SKIPPED,
+					TestLogEvent.STANDARD_ERROR,
+					TestLogEvent.STANDARD_OUT
+			exceptionFormat TestExceptionFormat.FULL
+		}
+		info.events = debug.events
+		info.exceptionFormat = debug.exceptionFormat
+
+		afterSuite { desc, result ->
+			if (!desc.parent) { // will match the outermost suite
+				def enlapsedTime = (result.endTime - result.startTime) / 1000
+				def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped, enlapsed time: ${String.valueOf(enlapsedTime)} seconds)"
+				def startItem = '|  ', endItem = '  |'
+				def repeatLength = startItem.length() + output.length() + endItem.length()
+				println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+			}
+		}
+	}
+}*/
