@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav-bar"></div>
+
+      <div class="cart">Cart({{ cart }})</div>
+      
+      <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeFromCart"></product-display>
+      <!--
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img v-bind:src="image" :class="{ 'out-of-stock-img': inventory == 0 }">
+            <img v-bind:src="imageSelected">
+          </div>
+          <div class="product-info">
+            <h1>{{ title }}</h1>
+            <p v-if="onSale">{{ saleMessage }}</p>
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
+            <p v-if="inventory > 10">In Stock</p>
+            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+            <p v-else>Out of Stock</p>
+            <p v-show="onSale">On Sale</p>
+            <p>
+              Description: {{ description }}
+              <br/>
+              Made by <a :href="url">Vue Mastery</a>
+            </p>
+            <ul>
+              <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+            <ul id="sizes">
+              <li style="display: inline; padding-right: 10px;" v-for="(size, index) in sizes" :key="index">{{ size }}</li>
+            </ul>
+            <ul id="variants">
+              <div v-for="(variant, index) in variants" :key="variant.id" class="list-horizontal-item" style="text-align: center;">
+                <li
+                  :style="{ backgroundColor: variant.color }"
+                  @mouseover="updateVariant(index)"
+                  class="color-circle">
+                </li>
+                <span>{{ variant.color }}</span>
+              </div>
+            </ul>
+            <ul id="variants">
+              <div v-for="variant in variants" :key="variant.id" class="list-horizontal-item" style="text-align: center;">
+                <li
+                  :style="{ backgroundColor: variant.color }"
+                  @mouseover="updateImage(variant.image)"
+                  class="color-circle">
+                </li>
+                <span>{{ variant.color }}</span>
+              </div>
+            </ul>
+            <div 
+              v-for="variant in variants"
+              :key="variant.id"
+              @mouseover="updateImage(variant.image)"
+              class="color-circle"
+              :style="{ backgroundColor: variant.color }">
+            </div>
+            </ul>
+            <button class="button" v-on:click="addToCart" :disabled="inventory == 0" :class="{ disabledButton: inventory == 0 }">Add to cart</button>
+            <button class="button" v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart</button>
+            <button class="button" @click="removeFromCart">Remove item</button>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js"></script>
+
+    <!-- Import Component -->
+    <script src="./components/ProductDisplay.js"></script>
+
+    <!-- Import Component -->
+    <script src="./components/ProductDetails.js"></script>
+
+    <!-- Import Component -->
+    <script src="./components/ReviewForm.js"></script>
+
+    <!-- Import Component -->
+    <script src="./components/ReviewList.js"></script>
+
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount('#app');
+    </script>
+  </body>
+</html>
