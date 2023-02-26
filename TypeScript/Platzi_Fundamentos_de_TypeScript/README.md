@@ -11,3 +11,5 @@ node dist/`<file-name>.js`
 npx tsc --init
 npx tsc -p ./ -w
 npx tsc --watch
+npm install `<library>` --save
+npm i --save-dev @types/lodash
