@@ -366,4 +366,13 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+# Optional stylelint cache
+
+# SvelteKit build / generate output
+.svelte-ki
+
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,java,vuejs,windows,macos,linux,intellij+all,git
