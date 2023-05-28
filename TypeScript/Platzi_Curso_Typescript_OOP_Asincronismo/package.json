@@ -1,0 +1,21 @@
+{
+  "name": "platzi_curso_typescript_oop_asincronismo",
+  "version": "1.0.0",
+  "description": "npm init -y npm install typescript --save-dev npx tsc --version npx tsc --init npx tsc npx tsc --watch npm install -D ts-node npx ts-code ./src/`file-name`.ts npm install @capacitor/camera npm install @faker-js/faker --save-dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "axios": "^1.4.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "class-validator": "^0.14.0"
+  }
+}
